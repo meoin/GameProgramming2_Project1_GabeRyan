@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -23,6 +24,7 @@ namespace GameProgramming2_Project1_GabeRyan
         public string[] EnemyFile;
         public string[] CollectableFile;
         public bool ScreenIsDirty = false;
+        private int turn = 0;
         //public string[] _enemyStringArray;
 
 
@@ -115,7 +117,9 @@ namespace GameProgramming2_Project1_GabeRyan
             Initialize();
 
 
-            Thread.Sleep(17);
+            Thread.Sleep(1000);
+            Map.DisplayMap();
+            Draw();
 
 
             while (IsPlaying)
@@ -136,14 +140,13 @@ namespace GameProgramming2_Project1_GabeRyan
 
                 if (PlayerTurn == false)
                 {
-
-
                     for (int j = 0; j < Enemies.Count; j++)
                     {
                         Enemies[j].EnemyMove();
                     }
 
                     PlayerTurn = true;
+                    Draw();
                 }
 
                 GameOverCheck();
@@ -153,30 +156,27 @@ namespace GameProgramming2_Project1_GabeRyan
 
 
 
-                Draw();
+                
 
             }
         }
 
         private void Draw()
         {
-            if (ScreenIsDirty == false)
-            {
-                return;
-            }
-            Map.DisplayMap();
+            //if (ScreenIsDirty == false)
+            //{
+            //    return;
+            //}
 
             Player.DisplayPlayer();
 
-            for (int k = 0; k < Enemies.Count; k++)
-            {
-                Enemies[k].DisplayEnemy();
-            }
             for (int i = 0; i < Collectables.Count; i++)
             {
                 Collectables[i].DisplayCollectable();
-
-
+            }
+            for (int k = 0; k < Enemies.Count; k++)
+            {
+                Enemies[k].DisplayEnemy();
             }
 
             Console.SetCursorPosition(70, 26);

@@ -40,13 +40,14 @@ namespace GameProgramming2_Project1_GabeRyan
                 }
                 
                 ConsoleKeyInfo Input = Console.ReadKey(true);
+
                 if (Input.Key == ConsoleKey.W) playerYinput -= 1;
                 if (Input.Key == ConsoleKey.S) playerYinput += 1;
                 if (Input.Key == ConsoleKey.D) playerXinput += 1;
                 if (Input.Key == ConsoleKey.A) playerXinput -= 1;
 
+                ErasePlayer();
 
-                
                 Position.X += playerXinput;
                 Position.Y += playerYinput;
                 PlayXInput = playerXinput;
@@ -109,7 +110,7 @@ namespace GameProgramming2_Project1_GabeRyan
 
                 
                 Program.GameManager.PlayerTurn = false;
-                Program.GameManager.ScreenIsDirty = true;
+                //Program.GameManager.ScreenIsDirty = true;
                 
             }
             
@@ -117,6 +118,10 @@ namespace GameProgramming2_Project1_GabeRyan
 
         }
 
+        public void ErasePlayer() 
+        {
+            Program.GameManager.Map.DrawMapTile(Position.Y, Position.X);
+        }
         
 
         public void DisplayPlayer()

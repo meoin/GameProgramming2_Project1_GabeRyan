@@ -44,6 +44,7 @@ namespace GameProgramming2_Project1_GabeRyan
                 if (EnemyWait >= 2)
                 {
                     EnemyWait = 0;
+                    EraseEnemy();
 
                     enemyXInput += Program.GameManager.Random.Next(-1, 2);
                     enemyYInput += Program.GameManager.Random.Next(-1, 2);

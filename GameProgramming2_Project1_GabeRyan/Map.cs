@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -51,28 +52,9 @@ namespace GameProgramming2_Project1_GabeRyan
 
             for (int i = 0; i < _map.Length; i++)
             {
-                Console.SetCursorPosition(0, i);
-
                 for (int j = 0; j < _map[i].Length; j++)
                 {
-                    if (_map[i][j] == '`')
-                    {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                    }
-                    else if (_map[i][j] == '~')
-                    {
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                    }
-                    else if (_map[i][j] == '^')
-                    {
-                        Console.ForegroundColor = ConsoleColor.White;
-                    }
-                    else if (_map[i][j] == '#')
-                    {
-                        Console.ForegroundColor = ConsoleColor.DarkGray;
-                    }
-                    Console.Write(_map[i][j]);
-                    Console.ResetColor();
+                    DrawMapTile(i, j);
                 }
 
             }
@@ -81,6 +63,31 @@ namespace GameProgramming2_Project1_GabeRyan
             Console.Write("\n");
     
 
+        }
+
+        public void DrawMapTile(int row, int col) 
+        {
+            Debug.WriteLine($"Drawing map tile {_map[row][col]} at {row},{col}");
+            Console.SetCursorPosition(col, row);
+
+            if (_map[row][col] == '`')
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+            else if (_map[row][col] == '~')
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+            }
+            else if (_map[row][col] == '^')
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (_map[row][col] == '#')
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+            }
+            Console.Write(_map[row][col]);
+            Console.ResetColor();
         }
 
         public bool CheckCharInBoarder(char boarderchar)

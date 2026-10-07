@@ -44,6 +44,7 @@ namespace GameProgramming2_Project1_GabeRyan
                 if (EnemyWait >= 2)
                 {
                     EnemyWait = 0;
+                    EraseEnemy();
 
                     if (Program.GameManager.Player.Position.X < Position.X)
                     {

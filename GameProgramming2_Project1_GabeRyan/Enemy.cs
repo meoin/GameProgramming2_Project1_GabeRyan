@@ -47,14 +47,12 @@ namespace GameProgramming2_Project1_GabeRyan
             }
             if (Program.GameManager.PlayerTurn == false)
             {
-                Console.SetCursorPosition(0, 25);
-                Console.WriteLine("debug");
-               
                 EnemyWait += 1;
                 if(EnemyWait >= 2)
                 {
                     EnemyWait = 0;
-                    
+                    EraseEnemy();
+
                     if (Program.GameManager.Player.Position.X < Position.X)
                     {
                         enemyXInput = -1;
@@ -75,7 +73,7 @@ namespace GameProgramming2_Project1_GabeRyan
                         enemyYInput += 1;
 
                     }
-                    
+
                     Position.X += enemyXInput;
                     Position.Y += enemyYInput;
 
@@ -103,6 +101,11 @@ namespace GameProgramming2_Project1_GabeRyan
 
 
             
+        }
+
+        public void EraseEnemy()
+        {
+            Program.GameManager.Map.DrawMapTile(Position.Y, Position.X);
         }
 
 
