@@ -136,6 +136,8 @@ namespace GameProgramming2_Project1_GabeRyan
 
                 }
 
+                Collectables.RemoveAll(c => c.IsCollected);
+
 
 
                 if (PlayerTurn == false)
@@ -145,13 +147,15 @@ namespace GameProgramming2_Project1_GabeRyan
                         Enemies[j].EnemyMove();
                     }
 
+                    Enemies.RemoveAll(e => e.Health.CurrentHealth <= 0);
+
                     PlayerTurn = true;
                     Draw();
                 }
 
                 GameOverCheck();
                 WinCheck();
-                Collectables.RemoveAll(c => c.IsCollected);
+                
 
 
 
@@ -168,8 +172,6 @@ namespace GameProgramming2_Project1_GabeRyan
             //    return;
             //}
 
-            Player.DisplayPlayer();
-
             for (int i = 0; i < Collectables.Count; i++)
             {
                 Collectables[i].DisplayCollectable();
@@ -178,6 +180,8 @@ namespace GameProgramming2_Project1_GabeRyan
             {
                 Enemies[k].DisplayEnemy();
             }
+
+            Player.DisplayPlayer();
 
             Console.SetCursorPosition(70, 26);
             Console.WriteLine($"Score: {score}");

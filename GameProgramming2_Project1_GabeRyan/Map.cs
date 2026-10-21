@@ -67,7 +67,6 @@ namespace GameProgramming2_Project1_GabeRyan
 
         public void DrawMapTile(int row, int col) 
         {
-            Debug.WriteLine($"Drawing map tile {_map[row][col]} at {row},{col}");
             Console.SetCursorPosition(col, row);
 
             if (_map[row][col] == '`')

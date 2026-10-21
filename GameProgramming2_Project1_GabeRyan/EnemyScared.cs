@@ -22,17 +22,8 @@ namespace GameProgramming2_Project1_GabeRyan
 
             if (Health.CurrentHealth <= 0)
             {
-                Random random = new Random();
-
-                Position.X = random.Next(1, Program.GameManager.Map._map[0].Length - 1);
-                Position.Y = random.Next(1, Program.GameManager.Map._map.Length - 1);
-
-                if (Program.GameManager.Map._map[Position.Y][Position.X] != '`')
-                {
-                    EnemyMove();
-                }
-
-                Health.RespawnHealth();
+                EraseEnemy();
+                EventBus.Invoke(EventType.EnemyDied);
                 return;
             }
             if (Program.GameManager.PlayerTurn == false)

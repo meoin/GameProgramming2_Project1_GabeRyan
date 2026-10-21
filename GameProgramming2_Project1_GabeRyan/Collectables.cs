@@ -43,11 +43,9 @@ namespace GameProgramming2_Project1_GabeRyan
         {
             if (Program.GameManager.Player.Position.X == Position.X && Program.GameManager.Player.Position.Y == Position.Y)
             {
-                Program.GameManager.Player.Position.X -= Program.GameManager.Player.PlayXInput;
-                Program.GameManager.Player.Position.Y -= Program.GameManager.Player.PlayerYInput;
                 Program.GameManager.score += 1;
                 IsCollected = true;
-                
+                EventBus.Invoke(EventType.ScorePickedUp);
             }
         }
     }

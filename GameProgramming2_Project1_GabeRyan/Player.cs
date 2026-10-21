@@ -48,6 +48,8 @@ namespace GameProgramming2_Project1_GabeRyan
 
                 ErasePlayer();
 
+                if (playerXinput != 0 || playerYinput != 0) EventBus.Invoke(EventType.StepTaken);
+
                 Position.X += playerXinput;
                 Position.Y += playerYinput;
                 PlayXInput = playerXinput;
@@ -69,8 +71,6 @@ namespace GameProgramming2_Project1_GabeRyan
                     if (Program.GameManager.Collectables[i].Position.X == Position.X && Program.GameManager.Collectables[i].Position.Y == Position.Y)
                     {
                         Program.GameManager.Collectables[i].Collect();
-                        Position.X -= playerXinput;
-                        Position.Y -= playerYinput;
                         Program.GameManager.PlayerTurn = false;
                         return;
                     }

@@ -30,12 +30,10 @@ namespace GameProgramming2_Project1_GabeRyan
         {
             if (Program.GameManager.Player.Position.X == Position.X && Program.GameManager.Player.Position.Y == Position.Y)
             {
-                Program.GameManager.Player.Position.X -= Program.GameManager.Player.PlayXInput;
-                Program.GameManager.Player.Position.Y -= Program.GameManager.Player.PlayerYInput;
                 CollectableCount += 1;
                 IsCollected = true;
                 Program.GameManager.Player.Health.Heal();
-
+                EventBus.Invoke(EventType.HealthPickedUp);
             }
         }
     }
