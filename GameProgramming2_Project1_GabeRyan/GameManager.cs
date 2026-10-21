@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameProgramming2_Project1_GabeRyan.Quests;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -25,6 +26,7 @@ namespace GameProgramming2_Project1_GabeRyan
         public string[] CollectableFile;
         public bool ScreenIsDirty = false;
         private int turn = 0;
+        private QuestManager QM;
         //public string[] _enemyStringArray;
 
 
@@ -183,6 +185,8 @@ namespace GameProgramming2_Project1_GabeRyan
 
             Player.DisplayPlayer();
 
+            QM.DisplayQuests(70, 5);
+
             Console.SetCursorPosition(70, 26);
             Console.WriteLine($"Score: {score}");
             ScreenIsDirty = false;
@@ -198,6 +202,11 @@ namespace GameProgramming2_Project1_GabeRyan
             Random = new Random();
             Enemies = new List<Enemy>();
             Collectables = new List<Collectables>();
+            QM = new QuestManager();
+            QM.AddQuest(new Quest(EventType.EnemyDied, 10, "Kill enemies"));
+            QM.AddQuest(new Quest(EventType.StepTaken, 50, "Take steps"));
+            QM.AddQuest(new Quest(EventType.HealthPickedUp, 5, "Pick up health"));
+            QM.AddQuest(new Quest(EventType.ScorePickedUp, 15, "Gain score"));
 
 
             FileEnemies("enemyData.txt");
@@ -252,9 +261,9 @@ namespace GameProgramming2_Project1_GabeRyan
 
         public void WinCheck()
         {
-            if (score == 25)
+            if (score >= 25)
             {
-                Program.GameManager.IsPlaying = false;
+                IsPlaying = false;
                 Console.Clear();
                 Console.WriteLine("You Win!");
                 Console.ReadKey();

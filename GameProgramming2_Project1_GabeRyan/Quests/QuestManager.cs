@@ -24,7 +24,13 @@ namespace GameProgramming2_Project1_GabeRyan.Quests
                 if (quest.Complete) Console.ForegroundColor = ConsoleColor.Green;
 
                 Console.Write($"{i+1}. {quest.Description}: {quest.Progress}/{quest.Goal}");
+                Console.ForegroundColor = ConsoleColor.White;
             }
+        }
+
+        public void AddQuest(Quest quest) 
+        {
+            Quests.Add(quest);
         }
     }
 }

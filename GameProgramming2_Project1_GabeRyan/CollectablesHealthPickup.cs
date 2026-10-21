@@ -28,7 +28,7 @@ namespace GameProgramming2_Project1_GabeRyan
 
         public override void Collect()
         {
-            if (Program.GameManager.Player.Position.X == Position.X && Program.GameManager.Player.Position.Y == Position.Y)
+            if (Program.GameManager.Player.Position.X == Position.X && Program.GameManager.Player.Position.Y == Position.Y && !IsCollected)
             {
                 CollectableCount += 1;
                 IsCollected = true;

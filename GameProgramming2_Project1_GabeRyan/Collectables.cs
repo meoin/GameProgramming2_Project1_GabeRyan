@@ -41,7 +41,7 @@ namespace GameProgramming2_Project1_GabeRyan
 
         public virtual void Collect()
         {
-            if (Program.GameManager.Player.Position.X == Position.X && Program.GameManager.Player.Position.Y == Position.Y)
+            if (Program.GameManager.Player.Position.X == Position.X && Program.GameManager.Player.Position.Y == Position.Y && !IsCollected)
             {
                 Program.GameManager.score += 1;
                 IsCollected = true;
