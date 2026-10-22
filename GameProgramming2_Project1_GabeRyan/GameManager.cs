@@ -204,9 +204,9 @@ namespace GameProgramming2_Project1_GabeRyan
             Collectables = new List<Collectables>();
             QM = new QuestManager();
             QM.AddQuest(new Quest(EventType.EnemyDied, 10, "Kill enemies"));
-            QM.AddQuest(new Quest(EventType.StepTaken, 50, "Take steps"));
-            QM.AddQuest(new Quest(EventType.HealthPickedUp, 5, "Pick up health"));
-            QM.AddQuest(new Quest(EventType.ScorePickedUp, 15, "Gain score"));
+            QM.AddQuest(new Quest(EventType.StepTaken, 100, "Take steps"));
+            QM.AddQuest(new Quest(EventType.HealthPickedUp, 3, "Pick up health"));
+            QM.AddQuest(new Quest(EventType.ScorePickedUp, 25, "Gain score"));
 
 
             FileEnemies("enemyData.txt");
@@ -231,6 +231,8 @@ namespace GameProgramming2_Project1_GabeRyan
                 }
 
             }
+
+            score = 0;
         }
 
 
